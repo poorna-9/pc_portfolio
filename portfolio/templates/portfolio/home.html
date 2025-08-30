@@ -1,0 +1,79 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}{{ profile.name }} – Portfolio{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>{{ profile.name }}</h1>
+    {% if profile.tagline %}<p class="tagline">{{ profile.tagline }}</p>{% endif %}
+    {% if profile.about %}<p class="about">{{ profile.about }}</p>{% endif %}
+    <div class="cta">
+      {% if profile.github %}<a class="btn" href="{{ profile.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+      {% if profile.linkedin %}<a class="btn outline" href="{{ profile.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    {% for p in projects %}
+      <article class="card">
+        <h3><a href="{% url 'project_detail' p.pk %}">{{ p.title }}</a></h3>
+        <p>{{ p.description|truncatechars:160 }}</p>
+        <p class="tech">{{ p.technologies }}</p>
+        <div class="links">
+          {% if p.github_url %}<a href="{{ p.github_url }}" target="_blank" rel="noopener">Code</a>{% endif %}
+          {% if p.demo_url %}<a href="{{ p.demo_url }}" target="_blank" rel="noopener">Demo</a>{% endif %}
+        </div>
+      </article>
+    {% empty %}
+      <p>No projects yet. Add some in the admin!</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    {% for cat, items in skills.items %}
+      <div class="skill-col">
+        <h3>{{ cat }}</h3>
+        <ul>
+          {% for s in items %}
+            <li>{{ s.name }}{% if s.level %} – {{ s.level }}{% endif %}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% empty %}
+      <p>No skills added yet.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul class="edu-list">
+    {% for e in educations %}
+      <li>
+        <strong>{{ e.degree }}</strong> – {{ e.institution }}
+        {% if e.start_year or e.end_year %} ({{ e.start_year }}–{{ e.end_year }}){% endif %}
+        {% if e.cgpa %} | CGPA: {{ e.cgpa }}{% endif %}
+        {% if e.details %}<div class="muted">{{ e.details }}</div>{% endif %}
+      </li>
+    {% empty %}
+      <li>No education records yet.</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <ul class="contact">
+    {% if profile.email %}<li>Email: <a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>{% endif %}
+    {% if profile.phone %}<li>Phone: {{ profile.phone }}</li>{% endif %}
+    {% if profile.location %}<li>Location: {{ profile.location }}</li>{% endif %}
+  </ul>
+</section>
+
+{% endblock %}

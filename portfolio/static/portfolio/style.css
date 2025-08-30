@@ -1,0 +1,37 @@
+:root {
+  --bg: #0b0f19;
+  --panel: #12172a;
+  --text: #e8ecf1;
+  --muted: #a4afc0;
+  --primary: #7aa2ff;
+  --border: #1f2741;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+a { color: var(--primary); text-decoration: none; }
+.container { width: min(1100px, 92vw); margin: 0 auto; padding: 24px; }
+.site-header { position: sticky; top: 0; background: rgba(11,15,25,.7); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 10; }
+.header-inner { display:flex; align-items:center; justify-content:space-between; }
+.brand { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+nav a { margin-left: 16px; color: var(--muted); }
+nav a:hover { color: var(--text); }
+.site-footer { border-top: 1px solid var(--border); margin-top: 48px; }
+.hero { display:grid; grid-template-columns: 1fr; gap: 16px; padding: 24px; background: linear-gradient(180deg, rgba(122,162,255,.15), transparent 80%); border: 1px solid var(--border); border-radius: 16px; }
+.hero h1 { margin: 0 0 8px; font-size: 2rem; }
+.tagline { margin: 0 0 10px; color: var(--muted); }
+.about { color: var(--text); opacity: .95; }
+.cta .btn { margin-right: 10px; }
+.btn { display:inline-block; padding:10px 14px; border-radius: 10px; border:1px solid var(--primary); background: var(--primary); color:#0b0f19; font-weight:600; }
+.btn.outline { background: transparent; color: var(--primary); }
+h2 { margin-top: 36px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--border); padding: 18px; border-radius: 14px; }
+.card h3 { margin-top: 0; }
+.tech { color: var(--muted); font-size: .95rem; }
+.skills { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.skill-col { background: var(--panel); border: 1px solid var(--border); padding: 16px; border-radius: 14px; }
+.edu-list { list-style: none; padding: 0; }
+.edu-list li { background: var(--panel); border: 1px solid var(--border); padding: 14px; border-radius: 14px; margin-bottom: 12px; }
+.contact { list-style: none; padding: 0; }
+.contact li { margin: 6px 0; }
+.project-detail { background: var(--panel); border:1px solid var(--border); border-radius: 14px; padding: 18px; }

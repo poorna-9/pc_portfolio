@@ -1,0 +1,13 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}{{ project.title }} – Portfolio{% endblock %}
+{% block content %}
+  <article class="project-detail">
+    <h1>{{ project.title }}</h1>
+    <p class="tech">{{ project.technologies }}</p>
+    <p>{{ project.description }}</p>
+    <div class="links">
+      {% if project.github_url %}<a class="btn" href="{{ project.github_url }}" target="_blank" rel="noopener">View Code</a>{% endif %}
+      {% if project.demo_url %}<a class="btn outline" href="{{ project.demo_url }}" target="_blank" rel="noopener">Live Demo</a>{% endif %}
+    </div>
+  </article>
+{% endblock %}
